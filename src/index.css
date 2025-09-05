@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@layer theme, base, components, utilities;
+
+@theme {
+  --font-bodoni: 'Bodoni Moda', serif;
+  --font-lexend: 'Lexend Deca', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-lexend;
+  }
+  h1, h2, h3, h4 {
+    @apply font-bodoni;
+  }
+}
+
+@layer components {
+  .ChooseCard {
+    @apply w-[30%] h-96 p-4 my-4 border rounded-md overflow-auto
+  }
+}
