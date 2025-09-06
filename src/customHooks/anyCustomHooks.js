@@ -32,7 +32,6 @@ export const useGenerateList = (letters) => {
           fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${l}`)
             .then(res => res.json())
             .then(data => {
-              // Tomar un cóctel aleatorio del resultado si hay
               if (data.drinks && data.drinks.length > 0) {
                 return data.drinks[Math.floor(Math.random() * data.drinks.length)];
               }
@@ -40,7 +39,6 @@ export const useGenerateList = (letters) => {
             })
         );
         const results = await Promise.all(requests);
-        // Filtrar nulos y dejar solo cócteles válidos
         setRandomList(results.filter(Boolean));
       } catch (error) {
         console.error(error);
