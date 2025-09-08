@@ -24,7 +24,7 @@
 
 @layer components {
   .mainContainer {
-    @apply relative w-[70%] h-auto min-h-[70vh] mx-auto p-2 border-b-2 border-r-2 border-yellow-900/50 rounded-md shadow-lg;
+    @apply relative w-[70%] h-auto min-h-[70vh] mx-auto mt-20 p-2 border-b-2 border-r-2 border-yellow-900/50 rounded-md shadow-lg;
   }
   .CardsMenu {
     @apply w-full h-auto my-4 border rounded-md overflow-auto
@@ -33,7 +33,7 @@
     @apply w-48 h-48 flex flex-col items-center cursor-pointer active:scale-95 transition-all lg:w-60 lg:h-60 shadow-lg;
   }
   .CardsItemSearch {
-    @apply  w-64 h-64 flex flex-col gap-y-3 justify-center items-center cursor-pointer active:scale-95 transition-all lg:w-72 lg:h-72;
+    @apply w-64 h-64 flex flex-col gap-y-3 justify-center items-center cursor-pointer active:scale-95 transition-all lg:w-72 lg:h-72;
   }
   .CardsItem-figure {
     @apply w-full h-full rounded-md shadow-lg;

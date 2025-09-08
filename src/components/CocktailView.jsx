@@ -1,13 +1,13 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { useSearchByName } from "../customHooks/anyCustomHooks";
+import { useSearchQuery } from "../customHooks/useSearchQuery";
 import { Link } from "react-router";
 import homeIcon from "../assets/home.svg";
 import searchBg from "../assets/search-bg.jpg";
 
 export function CocktailView({ children }) {
   const { id } = useParams();
-  const result = useSearchByName(id);
+  const result = useSearchQuery(id);
   const { strDrink } = result
   const [cocktail, setCocktail] = useState([]);
 
@@ -20,16 +20,16 @@ export function CocktailView({ children }) {
   return (
     <div className="mainContainer mt-20">
       <figure className="absolute top-0 left-0 w-full h-full -z-10">
-          <img className="w-full h-full object-cover rounded-md" src={searchBg} alt="Search Background" />
+          <img loading="lazy" className="w-full h-full object-cover rounded-md" src={searchBg} alt="Search Background" />
       </figure>
        <Link to={"/"}>
-          <div className="currentTab w-auto hover:h-16 hover:-top-12 bg-slate-100 cursor-pointer transition-all">
+          <div className="currentTab w-auto hover:h-16 hover:-top-16 -left-0 bg-slate-100 cursor-pointer transition-all">
             Inicio
             <img className="block w-7 h-7" src={homeIcon} alt="" />
           </div>
         </Link>
         <div className="w-auto h-auto my-3 inner-shadow">
-          <h2 className="text-3xl my-4 italic font-semibold">{strDrink}</h2>
+          <h2 className="text-3xl my-4 italic font-light">{strDrink}</h2>
         </div>
       {cocktail.length === 0 ? children : (
         <ul className="">
@@ -50,10 +50,16 @@ export function CocktailView({ children }) {
                 </ol>
                 <h4 className="font-lexend text-lg font-extralight">Tipo de vaso: {item.strGlass}</h4>
               </div>
-              <article className="flex flex-col">
-                <h4 className="italic font-extralight text-2xl my-2">Preparacion:</h4>
-                <p className="text-lg font-extralight">{item.strInstructionsES}</p>
-              </article>
+              {item.strInstructionsES ?
+                <article className="flex flex-col">
+                  <h4 className="italic font-extralight text-2xl my-2">Preparacion:</h4>
+                  <p className="text-lg font-extralight">{item.strInstructionsES}</p>
+                </article> : 
+                <div className="mx-16 my-16 font-lexend font-extralight text-2xl">
+                    <p>Sin datos de preparacion para este coctel</p>
+                </div>
+                }
+              
             </li>
           ))}
         </ul>

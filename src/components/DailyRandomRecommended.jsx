@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useGenerateList } from "../customHooks/anyCustomHooks";
+import { useRandomQuery } from "../customHooks/useRandomQuery";
 import { Link } from "react-router";
 import likeIcon from "../assets/like-svgrepo-com.svg";
 import searchIcon from "../assets/search-alt-2-svgrepo-com.svg";
@@ -8,7 +8,7 @@ import searchBg from "../assets/search-bg.jpg";
 export function DailyRandomRecommended({ randomValues, children }) {
   const [letters, setLetters] = useState([]);
   const [loading, setLoading] = useState(true);
-  const drinks = useGenerateList(letters);
+  const drinks = useRandomQuery(letters);
 
   function handleShowRandomDrink() {
     setLetters(randomValues(8));

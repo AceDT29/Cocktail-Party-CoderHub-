@@ -28,7 +28,7 @@ function App() {
             <Route path="/"
               element={<DailyRandomRecommended
                 randomValues={getRandomUniqueLetters}
-                children={<HolderComp holders={3}
+                placeHolder={<HolderComp holders={3}
                 message="Recuperando datos..."
                 holderIcon={holderDrinksIcon}
                  />}
@@ -36,7 +36,7 @@ function App() {
             />
             <Route path="/search" 
             element={<SearchByName 
-                children={<HolderComp 
+                placeHolder={<HolderComp 
                 holders={1}
                 message="Buscando cócteles..."
                 holderIcon={holderDrinksIcon}

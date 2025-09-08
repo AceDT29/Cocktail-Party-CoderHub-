@@ -1,27 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react"
 
-export function useSearchByName(name) {
-  const [results, setResults] = useState([]);
-
-  useEffect(() => {
-    if (name == "") return;
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`);
-        const data = await response.json();
-        setResults(data.drinks ? data.drinks[0] : []);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, [name]);
-
-  return results;
-}
-
-export const useGenerateList = (letters) => {
+export const useRandomQuery = (letters) => {
   const [randomList, setRandomList] = useState([]);
 
   useEffect(() => {
@@ -39,7 +18,7 @@ export const useGenerateList = (letters) => {
             })
         );
         const results = await Promise.all(requests);
-        setRandomList(results.filter(Boolean));
+        setRandomList(results);
       } catch (error) {
         console.error(error);
       }
