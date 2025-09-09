@@ -5,7 +5,7 @@ import searchBg from "../assets/search-bg.jpg";
 import likeIcon from "../assets/like-svgrepo-com.svg";
 import searchIcon from "../assets/search-alt-2-svgrepo-com.svg";
 
-export function SearchByName({ placeholder }) {
+export function SearchByName({ children }) {
   const [entries, setEntries] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const searchResults = useSearchQuery(entries);
@@ -49,7 +49,7 @@ export function SearchByName({ placeholder }) {
                         />
                 </div>
            </div>
-           {isTyping ? placeholder : (
+           {isTyping ? children : (
                 <ul className="flex flex-col justify-center p-4 items-center transition-all">
                     {dataResults.map(item => (
                     <Link to={`/cocktail/${item?.strDrink}`}>

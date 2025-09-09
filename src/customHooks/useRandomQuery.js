@@ -18,7 +18,7 @@ export const useRandomQuery = (letters) => {
             })
         );
         const results = await Promise.all(requests);
-        setRandomList(results);
+        setRandomList(results.filter(Boolean));
       } catch (error) {
         console.error(error);
       }

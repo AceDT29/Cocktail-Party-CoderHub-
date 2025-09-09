@@ -5,7 +5,7 @@ import likeIcon from "../assets/like-svgrepo-com.svg";
 import searchIcon from "../assets/search-alt-2-svgrepo-com.svg";
 import searchBg from "../assets/search-bg.jpg";
 
-export function DailyRandomRecommended({ randomValues, children }) {
+export function DailyRandomRecommended({ randomValues, placeHolder }) {
   const [letters, setLetters] = useState([]);
   const [loading, setLoading] = useState(true);
   const drinks = useRandomQuery(letters);
@@ -44,12 +44,12 @@ export function DailyRandomRecommended({ randomValues, children }) {
           <div>
           </div>
           <ul className="flex flex-wrap justify-center gap-8 p-4 items-center ">
-            {loading ? children :
+            {loading ? placeHolder :
               drinks.map(item => (
             <Link to={`/cocktail/${item?.strDrink}`} key={item?.idDrink}>
               <li className="CardsItem">
                 <figure className='w-[90%] h-[90%] flex justify-center items-center rounded-md border-yellow-900/50 border-2'>
-                  <img className='w-[90%] h-[90%] object-cover rounded-md' loading="lazy" src={item?.strDrinkThumb} alt={item.strDrink} />
+                  <img className='w-[90%] h-[90%] object-cover rounded-md' src={item?.strDrinkThumb} alt={item?.strDrink} />
                 </figure>
                 <p className="font-extralight text-lg">{item?.strDrink}</p>
               </li>

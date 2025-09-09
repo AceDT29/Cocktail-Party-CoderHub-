@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router";
 import { DailyRandomRecommended } from "./components/DailyRandomRecommended";
 import { SearchByName } from "./components/SearchByName";
 import { HolderComp } from "./components/cocktailPlaceHolder";
